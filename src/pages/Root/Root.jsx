@@ -3,10 +3,10 @@ import Navbar from "../../components/Header/Navbar";
 
 const Root = () => {
   return (
-    <>
+    <div className="font-montserrat">
       <Navbar></Navbar>
       <Outlet></Outlet>
-    </>
+    </div>
   );
 };
 
