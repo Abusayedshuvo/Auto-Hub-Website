@@ -18,6 +18,18 @@ const AddProduct = () => {
     const price = form.price.value;
     const description = form.description.value;
     const rate = rating;
+    const product = { img, name, brand, types, price, description, rate };
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div className="container mx-auto">
