@@ -15,6 +15,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         Swal.fire("Google Login Success!", "", "success");
+        setError("");
       })
       .catch((error) => {
         console.log(error.message);
@@ -26,6 +27,7 @@ const Login = () => {
     githubLogin()
       .then(() => {
         Swal.fire("Github Login Success!", "", "success");
+        setError("");
       })
       .catch((error) => {
         console.log(error.message);
@@ -38,6 +40,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         Swal.fire("Facebook Login Success!", "", "success");
+        setError("");
       })
       .catch((error) => {
         console.log(error.message);
@@ -55,6 +58,7 @@ const Login = () => {
       .then(() => {
         Swal.fire("Log In Success!", "", "success");
         event.target.reset();
+        setError("");
       })
       .catch((error) => {
         setError(error.message);
