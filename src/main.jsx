@@ -5,6 +5,7 @@ import "./index.css";
 import Root from "./pages/Root/Root.jsx";
 import ErrorPage from "./pages/ErrorPages/ErrorPage";
 import Login from "./pages/Login/Login";
+import AuthProvider from "./context/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -18,13 +19,15 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/login',
-    element: <Login></Login>
-  }
+    path: "/login",
+    element: <Login></Login>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

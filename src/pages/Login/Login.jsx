@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaGoogle, FaGithub, FaFacebookF } from "react-icons/fa6";
+import { useContext } from "react";
+import AuthProvider, { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
+  const { googleLogin } = useContext(AuthContext);
   return (
     <div className="bg-[url('/src/assets/slide1.jpg')] h-screen flex justify-center items-center font-montserrat">
       <div className="text-center bg-white/90 p-10 rounded-md lg:w-4/12">
@@ -38,7 +41,7 @@ const Login = () => {
 
           <p className="mt-5">
             Don't have an account?{" "}
-            <Link className="text-yellow" to="/">
+            <Link className="text-yellow font-semibold" to="/">
               Register here
             </Link>
           </p>
