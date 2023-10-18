@@ -2,6 +2,8 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { PropTypes } from "prop-types";
@@ -32,12 +34,24 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, facebookProvider);
   };
 
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const loginUser = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const authInfo = {
     user,
     loading,
     googleLogin,
     githubLogin,
     facebookLogin,
+    createUser,
+    loginUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

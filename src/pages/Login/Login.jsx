@@ -3,15 +3,18 @@ import logo from "../../assets/logo.png";
 import { FaGoogle, FaGithub, FaFacebookF } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
+  const { googleLogin, githubLogin, facebookLogin, loginUser } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
 
   const handleGoogle = () => {
     googleLogin()
       .then((result) => {
         console.log(result.user);
+        Swal.fire("Google Login Success!", "", "success");
       })
       .catch((error) => {
         console.log(error.message);
@@ -21,8 +24,8 @@ const Login = () => {
 
   const handleGithub = () => {
     githubLogin()
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        Swal.fire("Github Login Success!", "", "success");
       })
       .catch((error) => {
         console.log(error.message);
@@ -34,9 +37,26 @@ const Login = () => {
     facebookLogin()
       .then((result) => {
         console.log(result.user);
+        Swal.fire("Facebook Login Success!", "", "success");
       })
       .catch((error) => {
         console.log(error.message);
+        setError(error.message);
+      });
+  };
+
+  const handleUserLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then(() => {
+        Swal.fire("Log In Success!", "", "success");
+        event.target.reset();
+      })
+      .catch((error) => {
         setError(error.message);
       });
   };
@@ -48,7 +68,7 @@ const Login = () => {
           <img className="lg:w-36 mx-auto mb-5" src={logo} alt="" />
         </Link>
         <div>
-          <form>
+          <form onSubmit={handleUserLogin}>
             <p className="text-2xl  font-semibold mb-4">
               Login to <span className="text-yellow"> your account </span>
             </p>
@@ -68,15 +88,18 @@ const Login = () => {
               id=""
             />
             <input
-              className="w-full block p-4 bg-yellow text-white font-semibold"
+              className="w-full block p-4 bg-yellow text-white font-semibold cursor-pointer"
               type="submit"
               value="Login"
             />
           </form>
+          {error && (
+            <p className="text-red-500 mt-5 font-semibold"> {error} </p>
+          )}
 
           <p className="mt-5">
-            Don't have an account?{" "}
-            <Link className="text-yellow font-semibold" to="/">
+            Don't have an account?
+            <Link className="text-yellow font-semibold" to="/registration">
               Register here
             </Link>
           </p>
