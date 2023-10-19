@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddProduct = () => {
   const [rating, setRating] = useState(5);
@@ -29,10 +30,14 @@ const AddProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.acknowledged) {
+          Swal.fire("Product Added Successful!", "", "success");
+          form.reset();
+        }
       });
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-24">
       <h2 className="text-6xl text-center font-racing my-10">Added Product</h2>
       <div className="bg-slate-200 p-16 rounded-md">
         <form onSubmit={handleAddProduct} className="grid grid-cols-2 gap-5">
@@ -52,14 +57,25 @@ const AddProduct = () => {
             id=""
             required
           />
-          <input
-            className="w-full block p-4 mb-4"
-            type="text"
-            name="brand"
-            placeholder="Brand Name"
-            id=""
-            required
-          />
+
+          <div>
+            <select
+              name="brand"
+              required
+              defaultValue={"DEFAULT"}
+              className="select select-bordered w-full border-0 rounded-none h-14"
+            >
+              <option value="DEFAULT" disabled>
+                Brand Name
+              </option>
+              <option value="Toyota">Toyota </option>
+              <option value="Audi">Audi</option>
+              <option value="BMW">BMW</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="Tesla">Tesla</option>
+              <option value="Honda">Honda</option>
+            </select>
+          </div>
           <div>
             <select
               name="types"

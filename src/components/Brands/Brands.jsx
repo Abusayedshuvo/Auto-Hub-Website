@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Brands = () => {
   const brands = [
     {
@@ -40,9 +42,11 @@ const Brands = () => {
           {brands.map((brand) => (
             <div className="bg-slate-200" key={brand.id}>
               <img className="bor" src={brand.img} alt="" />
-              <p className="text-3xl font-semibold text-center p-4">
-                {brand.name}
-              </p>
+              <Link to={`/product/${brand.name}`}>
+                <p className="text-3xl font-semibold text-center p-4">
+                  {brand.name}
+                </p>
+              </Link>
             </div>
           ))}
         </div>

@@ -9,6 +9,8 @@ import AuthProvider from "./context/AuthProvider";
 import Registration from "./pages/Registration/Registration";
 import Home from "./pages/Home/Home";
 import AddProduct from "./pages/AddProduct/AddProduct";
+import PrivateRoutes from "./pages/Routes/PrivateRoutes";
+import Products from "./pages/Products/Products";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoutes>
+            <AddProduct></AddProduct>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/products/:id",
+        element: <Products></Products>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
     ],
   },
