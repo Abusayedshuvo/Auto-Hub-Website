@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const Update = () => {
   const [rating, setRating] = useState(5);
   const product = useLoaderData();
-  const { img, name, brand, types, price, description, rate } = product;
+  const { _id, img, name, brand, types, price, description } = product;
   const handleRating = (event) => {
     const selectedRating = parseInt(event.target.value, 10);
     setRating(selectedRating);
@@ -22,18 +22,18 @@ const Update = () => {
     const description = form.description.value;
     const rate = rating;
     const updateProduct = { img, name, brand, types, price, description, rate };
-    fetch("http://localhost:5000/products", {
-      method: "POST",
+    fetch(`http://localhost:5000/product/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(product),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.acknowledged) {
-          Swal.fire("Product Added Successful!", "", "success");
+        if (data.modifiedCount > 0) {
+          Swal.fire("Product Update Successful!", "", "success");
           form.reset();
         }
       });
@@ -50,6 +50,7 @@ const Update = () => {
             placeholder="Image URL"
             id=""
             required
+            defaultValue={img}
           />
           <input
             className="w-full block p-4 mb-4"
@@ -58,13 +59,14 @@ const Update = () => {
             placeholder="Name"
             id=""
             required
+            defaultValue={name}
           />
 
           <div>
             <select
               name="brand"
               required
-              defaultValue={"DEFAULT"}
+              defaultValue={brand}
               className="select select-bordered w-full border-0 rounded-none h-14"
             >
               <option value="DEFAULT" disabled>
@@ -82,7 +84,7 @@ const Update = () => {
             <select
               name="types"
               required
-              defaultValue={"DEFAULT"}
+              defaultValue={types}
               className="select select-bordered w-full border-0 rounded-none h-14"
             >
               <option value="DEFAULT" disabled>
@@ -103,6 +105,7 @@ const Update = () => {
             placeholder="Price"
             id=""
             required
+            defaultValue={price}
           />
           <input
             className="w-full block p-4 mb-4"
@@ -111,6 +114,7 @@ const Update = () => {
             placeholder="Short description"
             id=""
             required
+            defaultValue={description}
           />
           <div className="rating bg-white p-4">
             <span className="mr-5">Rating : </span>

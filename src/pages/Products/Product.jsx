@@ -46,9 +46,11 @@ const Product = ({ product }) => {
               View Details
             </button>
           </Link>
-          <button className="bg-white px-4 py-2 text-black rounded-full text-sm font-medium">
-            Update
-          </button>
+          <Link to={`/update/${_id}`}>
+            <button className="bg-white px-4 py-2 text-black rounded-full text-sm font-medium">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>
