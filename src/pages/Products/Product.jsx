@@ -1,8 +1,9 @@
 import { PropTypes } from "prop-types";
 import { FaStar } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { img, name, brand, types, price, rate } = product;
+  const { _id, img, name, brand, types, price, rate } = product;
   const remainingRating = Math.abs(rate - 5);
   return (
     <div className="bg-[#25363B] text-white rounded-md">
@@ -40,9 +41,11 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div className="flex justify-between mt-5">
-          <button className="bg-white px-4 py-2 text-black rounded-full text-sm font-medium">
-            View Details
-          </button>
+          <Link to={`/product/${_id}`}>
+            <button className="bg-white px-4 py-2 text-black rounded-full text-sm font-medium">
+              View Details
+            </button>
+          </Link>
           <button className="bg-white px-4 py-2 text-black rounded-full text-sm font-medium">
             Update
           </button>

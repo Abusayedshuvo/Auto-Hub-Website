@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaGoogle, FaGithub, FaFacebookF } from "react-icons/fa6";
 import { useContext, useState } from "react";
@@ -6,6 +6,8 @@ import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { googleLogin, githubLogin, facebookLogin, loginUser } =
     useContext(AuthContext);
   const [error, setError] = useState("");
@@ -16,6 +18,7 @@ const Login = () => {
         console.log(result.user);
         Swal.fire("Google Login Success!", "", "success");
         setError("");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -28,6 +31,7 @@ const Login = () => {
       .then(() => {
         Swal.fire("Github Login Success!", "", "success");
         setError("");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -41,6 +45,7 @@ const Login = () => {
         console.log(result.user);
         Swal.fire("Facebook Login Success!", "", "success");
         setError("");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -59,6 +64,7 @@ const Login = () => {
         Swal.fire("Log In Success!", "", "success");
         event.target.reset();
         setError("");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         setError(error.message);
