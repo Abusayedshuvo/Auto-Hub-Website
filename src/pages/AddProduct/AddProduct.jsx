@@ -20,7 +20,7 @@ const AddProduct = () => {
     const description = form.description.value;
     const rate = rating;
     const product = { img, name, brand, types, price, description, rate };
-    fetch("http://localhost:5000/products", {
+    fetch("https://server-side-inky.vercel.app/products", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

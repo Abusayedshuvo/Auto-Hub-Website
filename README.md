@@ -1,8 +1,18 @@
-# React + Vite
+# Auto Hub Brand New React Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## [ Live Website Link](https://assignment-10-688d3.web.app/)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This Auto Hub Brand New Website Created By React js and Tailwind css.
+- This website have login page and registration page.
+- For login and register use firebase Auth
+- Also have google, github and facebook login
+- Show sweet alert for success message and error message
+- Full Website is responsive
+- Also here private route
+- Add Product option. User can product add when he/she login
+- Added Product show by brand name
+- Single product show in details
+- Added product data can modify and update
+- Here is cart option . Product can add to cart
+- All cart product show in one page
+- Delete cart product item

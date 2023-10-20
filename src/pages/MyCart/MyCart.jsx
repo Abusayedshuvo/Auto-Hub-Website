@@ -18,7 +18,7 @@ const MyCart = () => {
   }, [cartProduct]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/carts/${user.email}`)
+    fetch(`https://server-side-inky.vercel.app/carts/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCartProduct(data);
@@ -26,7 +26,7 @@ const MyCart = () => {
   }, [user.email]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/cart/${id}`, {
+    fetch(`https://server-side-inky.vercel.app/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

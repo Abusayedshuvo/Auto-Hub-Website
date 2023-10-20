@@ -22,7 +22,7 @@ const Update = () => {
     const description = form.description.value;
     const rate = rating;
     const updateProduct = { img, name, brand, types, price, description, rate };
-    fetch(`http://localhost:5000/product/${_id}`, {
+    fetch(`https://server-side-inky.vercel.app/product/${_id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
