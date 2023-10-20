@@ -15,6 +15,8 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import MyCart from "./pages/MyCart/MyCart";
 import Update from "./pages/Update/Update";
 
+const apiURL = "http://localhost:5000";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,10 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/products/:id",
         element: <Products></Products>,
-        loader: ({ params }) =>
-          fetch(
-            `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/products/${params.id}`
-          ),
+        loader: ({ params }) => fetch(`${apiURL}/products/${params.id}`),
       },
       {
         path: "/product/:id",
@@ -48,10 +47,7 @@ const router = createBrowserRouter([
             <ProductDetails></ProductDetails>
           </PrivateRoutes>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/product/${params.id}`
-          ),
+        loader: ({ params }) => fetch(`${apiURL}/product/${params.id}`),
       },
 
       {
@@ -61,10 +57,7 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoutes>
         ),
-        loader: () =>
-          fetch(
-            "https://server-side-e95aq79ex-abusayeds-projects.vercel.app/products"
-          ),
+        loader: () => fetch(`${apiURL}/products`),
       },
       {
         path: "/update/:id",
@@ -73,10 +66,7 @@ const router = createBrowserRouter([
             <Update></Update>
           </PrivateRoutes>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/product/${params.id}`
-          ),
+        loader: ({ params }) => fetch(`${apiURL}/product/${params.id}`),
       },
     ],
   },

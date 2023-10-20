@@ -22,16 +22,13 @@ const Update = () => {
     const description = form.description.value;
     const rate = rating;
     const updateProduct = { img, name, brand, types, price, description, rate };
-    fetch(
-      `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/product/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(updateProduct),
-      }
-    )
+    fetch(`http://localhost:5000/product/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updateProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

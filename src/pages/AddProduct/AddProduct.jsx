@@ -20,16 +20,13 @@ const AddProduct = () => {
     const description = form.description.value;
     const rate = rating;
     const product = { img, name, brand, types, price, description, rate };
-    fetch(
-      "https://server-side-e95aq79ex-abusayeds-projects.vercel.app/products",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(product),
-      }
-    )
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

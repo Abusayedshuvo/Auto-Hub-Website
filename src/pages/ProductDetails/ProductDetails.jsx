@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const productId = id;
     const cartInfo = { userEmail, productId };
 
-    fetch("https://server-side-e95aq79ex-abusayeds-projects.vercel.app/carts", {
+    fetch("http://localhost:5000/carts", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -25,7 +25,11 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        Swal.fire("Product Add to Cart!", "", "success");
+        if (data.find) {
+          Swal.fire("Already added!", "", "error");
+        } else {
+          Swal.fire("Success!", "", "success");
+        }
       });
   };
   return (

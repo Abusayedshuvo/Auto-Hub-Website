@@ -8,14 +8,17 @@ const MyCart = () => {
   const products = useLoaderData();
   const { user } = useContext(AuthContext);
   const [cartProduct, setCartProduct] = useState([]);
-  const cartItem = products.filter((item) => {
-    return cartProduct.find((i) => i.productId === item._id);
-  });
+  const [cartItem, setCartItem] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/carts/${user.email}`
-    )
+    const cartItem = products.filter((item) => {
+      return cartProduct.find((i) => i.productId === item._id);
+    });
+    setCartItem(cartItem);
+  }, [cartProduct]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/carts/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCartProduct(data);
@@ -23,17 +26,16 @@ const MyCart = () => {
   }, [user.email]);
 
   const handleDelete = (id) => {
-    fetch(
-      `https://server-side-e95aq79ex-abusayeds-projects.vercel.app/cart/${id}`,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(`http://localhost:5000/cart/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
           Swal.fire("Product is Delete!", "", "success");
+          const remaining = cartItem.filter((i) => i._id !== id);
+          setCartItem(remaining);
         }
       });
   };
