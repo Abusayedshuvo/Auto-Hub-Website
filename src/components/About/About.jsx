@@ -4,7 +4,7 @@ import signature from "../../assets/signature.png";
 const About = () => {
   return (
     <>
-      <div className="container mx-auto grid grid-cols-2 my-32">
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 my-32 gap-6 px-4 md:px-0">
         <div>
           <img className="rounded-md" src={aboutImg} alt="" />
         </div>
@@ -31,8 +31,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className="container mx-auto grid grid-cols-3 gap-10 text-center">
-        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md ">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md dark:border-2">
           <p className="text-2xl font-semibold mb-5">24 / 7 CAR SUPPORT</p>
           <p>
             Need assistance on the road, anytime, anywhere? Our 24/7 Car Support
@@ -41,7 +41,7 @@ const About = () => {
             is here to keep you cruising smoothly around the clock
           </p>
         </div>
-        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md">
+        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md dark:border-2">
           <p className="text-2xl font-semibold mb-5">LOTS OF LOCATION</p>
           <p>
             Discover the convenience of AutoHub with our numerous locations
@@ -51,7 +51,7 @@ const About = () => {
             quality, and expertise.
           </p>
         </div>
-        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md">
+        <div className="shadow-lg hover:shadow-2xl duration-500 transition-all p-5 rounded-md dark:border-2">
           <p className="text-2xl font-semibold mb-5">RESERVATION ANYTIME</p>
           <p>
             Seize the wheel of convenience with AutoHub's Reservation Anytime

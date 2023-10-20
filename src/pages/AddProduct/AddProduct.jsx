@@ -20,13 +20,16 @@ const AddProduct = () => {
     const description = form.description.value;
     const rate = rating;
     const product = { img, name, brand, types, price, description, rate };
-    fetch("http://localhost:5000/products", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
+    fetch(
+      "https://server-side-e95aq79ex-abusayeds-projects.vercel.app/products",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -39,8 +42,11 @@ const AddProduct = () => {
   return (
     <div className="container mx-auto my-24">
       <h2 className="text-6xl text-center font-racing my-10">Added Product</h2>
-      <div className="bg-slate-200 p-16 rounded-md">
-        <form onSubmit={handleAddProduct} className="grid grid-cols-2 gap-5">
+      <div className="bg-slate-200 dark:bg-slate-800 p-16 rounded-md">
+        <form
+          onSubmit={handleAddProduct}
+          className="lg:grid lg:grid-cols-2 gap-5"
+        >
           <input
             className="w-full block p-4 mb-4"
             type="text"
@@ -58,7 +64,7 @@ const AddProduct = () => {
             required
           />
 
-          <div>
+          <div className="mb-4">
             <select
               name="brand"
               required
@@ -81,7 +87,7 @@ const AddProduct = () => {
               name="types"
               required
               defaultValue={"DEFAULT"}
-              className="select select-bordered w-full border-0 rounded-none h-14"
+              className="select select-bordered w-full border-0 rounded-none h-14 mb-4"
             >
               <option value="DEFAULT" disabled>
                 Types?
@@ -110,7 +116,7 @@ const AddProduct = () => {
             id=""
             required
           />
-          <div className="rating bg-white p-4">
+          <div className="rating bg-white p-4 mb-6">
             <span className="mr-5">Rating : </span>
             {[1, 2, 3, 4, 5].map((value) => (
               <input

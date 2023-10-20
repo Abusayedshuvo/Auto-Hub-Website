@@ -35,12 +35,12 @@ const Brands = () => {
   ];
   return (
     <>
-      <div className="container mx-auto md:my-10 lg:my-20">
+      <div className="container mx-auto my-10 lg:my-20 px-4 md:px-0">
         <p className="text-6xl mb-20 text-center font-racing"> Our Brands</p>
 
-        <div className="grid grid-cols-3 gap-6 ">
+        <div className="grid grid-cols-1 md:gris-cols-2 lg:grid-cols-3 gap-6 ">
           {brands.map((brand) => (
-            <div className="bg-slate-200" key={brand.id}>
+            <div className="bg-slate-200 dark:bg-slate-800" key={brand.id}>
               <img className="bor" src={brand.img} alt="" />
               <Link to={`/products/${brand.name}`}>
                 <p className="text-3xl font-semibold text-center p-4">

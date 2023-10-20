@@ -13,7 +13,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-slate-200 py-20">
+    <div className="bg-slate-200 dark:bg-slate-800  py-20 px-4 md:px-0">
       <div className="container mx-auto grid lg:grid-cols-10 gap-10">
         <div className="col-span-3">
           <img className="w-1/2" src={logo} alt="" />
@@ -122,7 +122,7 @@ const Footer = () => {
               id=""
             />
             <input
-              className="btn bg-yellow hover:bg-black rounded-none text-white"
+              className="btn border-0 bg-yellow hover:bg-black rounded-none text-white"
               type="submit"
               value="Subscribe"
             />

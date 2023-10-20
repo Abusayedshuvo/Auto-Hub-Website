@@ -14,8 +14,8 @@ const ProductDetails = () => {
     const userEmail = user.email;
     const productId = id;
     const cartInfo = { userEmail, productId };
-    console.log(cartInfo);
-    fetch("http://localhost:5000/carts", {
+
+    fetch("https://server-side-e95aq79ex-abusayeds-projects.vercel.app/carts", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

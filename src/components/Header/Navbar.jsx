@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
+import { FaMoon, FaRegLightbulb } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const Navbar = () => {
         console.log(error);
       });
   };
+
   const navLinks = (
     <>
       <li>
@@ -26,11 +28,17 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleDark = () => {
+    const id = document.getElementById("root");
+    id.classList.toggle("dark");
+  };
+
   return (
     <>
-      <div className=" bg-base-100">
-        <div className="navbar container mx-auto">
-          <div className="navbar-start">
+      <div className=" bg-base-100 dark:text-black">
+        <div className="navbar container mx-auto block lg:flex">
+          <div className="navbar-start w-full lg:w-1/2">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
                 <svg
@@ -56,13 +64,13 @@ const Navbar = () => {
               </ul>
             </div>
             <Link className="lg:w-36" to={"/"}>
-              <img src={logo} alt="" />
+              <img className="w-32 md:w-40 lg:w-auto" src={logo} alt="" />
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navLinks}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end w-full lg:w-1/2">
             {user ? (
               <>
                 {user?.displayName && (
@@ -85,6 +93,11 @@ const Navbar = () => {
                 Login
               </NavLink>
             )}
+
+            <button className="ml-5" onClick={handleDark}>
+              <FaMoon className="dark:hidden" />
+              <FaRegLightbulb className="hidden dark:inline-block	" />
+            </button>
           </div>
         </div>
       </div>

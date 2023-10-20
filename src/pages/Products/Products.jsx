@@ -13,19 +13,19 @@ const Products = () => {
     {
       id: 1,
       title: "Revolutionize your drive with cutting-edge technology and style.",
-      img: `${products[0].img}`,
+      img: `${products[1].img}`,
     },
     {
       id: 2,
       title:
         "Explore the latest innovations in automotive excellence with our featured products",
-      img: `${products[1].img}`,
+      img: `${products[2].img}`,
     },
     {
       id: 3,
       title:
         "Explore the latest innovations in automotive excellence with  your driving experience.",
-      img: `${products[2].img}`,
+      img: `${products[3].img}`,
     },
   ];
   return (
