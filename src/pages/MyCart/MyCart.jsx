@@ -42,25 +42,35 @@ const MyCart = () => {
   return (
     <div className="container mx-auto my-28">
       <p className="text-6xl font-racing mb-10">My Cart</p>
-      <div className="grid grid-cols-3 gap-6">
-        {cartItem.map((cart) => (
-          <div key={cart._id}>
-            <div className="bg-slate-200 dark:bg-slate-800 p-4 rounded-md shadow-lg flex gap-10 relative">
-              <img className="w-36" src={cart.img} alt="" />
-              <div>
-                <p>{cart.name}</p>
-                <p>Brand: {cart.brand}</p>
-                <p>Price: ${cart.price}</p>
-                <div className="text-right absolute right-5 top-5 text-red-600 text-lg">
-                  <button onClick={() => handleDelete(cart._id)}>
-                    <FaTrash />
-                  </button>
+      {cartItem.length > 0 ? (
+        <>
+          <div className="grid grid-cols-3 gap-6">
+            {cartItem.map((cart) => (
+              <div key={cart._id}>
+                <div className="bg-slate-200 dark:bg-slate-800 p-4 rounded-md shadow-lg flex gap-10 relative">
+                  <img className="w-36" src={cart.img} alt="" />
+                  <div>
+                    <p>{cart.name}</p>
+                    <p>Brand: {cart.brand}</p>
+                    <p>Price: ${cart.price}</p>
+                    <div className="text-right absolute right-5 top-5 text-red-600 text-lg">
+                      <button onClick={() => handleDelete(cart._id)}>
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      ) : (
+        <>
+          <div className="container mx-auto">
+            <p className="text-4xl  mb-10 font-bold"> You have no cart item</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
