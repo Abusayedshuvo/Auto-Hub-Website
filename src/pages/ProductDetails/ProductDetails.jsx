@@ -15,7 +15,7 @@ const ProductDetails = () => {
     const productId = id;
     const cartInfo = { userEmail, productId };
 
-    fetch("https://server-side-inky.vercel.app/carts", {
+    fetch("http://localhost:5000/carts", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

@@ -16,3 +16,14 @@
 - Here is cart option . Product can add to cart
 - All cart product show in one page
 - Delete cart product item
+
+## Technology used here
+
+- React JS
+- React Dom
+- Firebase
+- React Icons
+- Sweet Alert 2
+- Swiper Slider
+- Tailwind CSS
+- Daisy ui

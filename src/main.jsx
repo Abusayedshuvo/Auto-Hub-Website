@@ -15,7 +15,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import MyCart from "./pages/MyCart/MyCart";
 import Update from "./pages/Update/Update";
 
-const apiURL = "https://server-side-inky.vercel.app";
+const apiURL = "http://localhost:5000";
 
 const router = createBrowserRouter([
   {
